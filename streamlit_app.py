@@ -11,7 +11,7 @@ st.set_page_config(
     page_title = "Travel Planner Agentic Application",
     # page_icon = "",
     layout = "centered",
-    inintal_sidebar_state="expanded",
+    initial_sidebar_state="expanded",
 )
 
 st.title("Travel Planner Agentic Application")
