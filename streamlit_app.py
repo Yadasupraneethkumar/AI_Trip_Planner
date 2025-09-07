@@ -8,7 +8,7 @@ BASE_URL = "https://localhost:8000"     # Backend endpoint
 
 
 st.set_page_config(
-    oage_title = "Travel Planner Agentic Application",
+    page_title = "Travel Planner Agentic Application",
     # page_icon = "",
     layout = "centered",
     inintal_sidebar_state="expanded",
