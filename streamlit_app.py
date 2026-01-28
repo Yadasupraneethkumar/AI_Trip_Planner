@@ -20,7 +20,7 @@ st.title("Travel Planner Agentic Application")
 if "messages" not in st.session_state:
     st.session_state.messages= []
 
-st.header("How can I help you in planning a trip ? Let me know where so you want to visit.")
+st.header("How can I help you in planning a trip ? Let me know where do you want to visit.")
 
 
 with st.form(key = "Query_form", clear_on_submit= True):
