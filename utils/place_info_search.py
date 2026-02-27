@@ -1,37 +1,37 @@
 import os
 import json
-from langchain_tavily import TavilySearch
-from langchain_google_community import GooglePlacesTool, GooglePlacesAPIWrapper
+# from langchain_tavily import TavilySearch
+# from langchain_google_community import GooglePlacesTool, GooglePlacesAPIWrapper
 
 
-class GooglePlaceSearchTool:
-    def __init__(self,api_key:str):
-        self.place_wrapper = GooglePlacesAPIWrapper(gplaces_api_key=api_key)
-        self.place_wrapper = GooglePlacesTool(gplaces_api_key=api_key)
+# class GooglePlaceSearchTool:
+#     def __init__(self,api_key:str):
+#         self.place_wrapper = GooglePlacesAPIWrapper(gplaces_api_key=api_key)
+#         self.place_wrapper = GooglePlacesTool(gplaces_api_key=api_key)
 
-    def google_search_attractions(self, place:str)->dict:
-        """
-        Searches for attractions in the specified place using GooglePlaces API.
-        """
-        return self.places_tool.run(f"top attractive places in and around{place}")
+#     def google_search_attractions(self, place:str)->dict:
+#         """
+#         Searches for attractions in the specified place using GooglePlaces API.
+#         """
+#         return self.places_tool.run(f"top attractive places in and around{place}")
     
-    def google_search_restaurants(self, place:str)->dict:
-        """
-        Searches for avialable restaurants in the specified place using GooglePlaces API
-        """
-        return self.places_tool.run(f"what are the top 10 restaurants and eateries in and around {place}?")
+#     def google_search_restaurants(self, place:str)->dict:
+#         """
+#         Searches for avialable restaurants in the specified place using GooglePlaces API
+#         """
+#         return self.places_tool.run(f"what are the top 10 restaurants and eateries in and around {place}?")
     
-    def google_search_activity(self, place:str)-> dict:
-        """
-        Searches for popular activities in the specified place using GooglePlaces API.
-        """
-        return self.places_tool.run(f"Activities in and around {place}")
+#     def google_search_activity(self, place:str)-> dict:
+#         """
+#         Searches for popular activities in the specified place using GooglePlaces API.
+#         """
+#         return self.places_tool.run(f"Activities in and around {place}")
     
-    def google_search_tranportation(self, place: str)-> dict:
-        """
-        Searches for available modes of transportation in the specifies place using GooglePlaces API
-        """
-        return self.places_tool.run(f"What are the different modes of transportation available in {place}?")
+#     def google_search_tranportation(self, place: str)-> dict:
+#         """
+#         Searches for available modes of transportation in the specifies place using GooglePlaces API
+#         """
+#         return self.places_tool.run(f"What are the different modes of transportation available in {place}?")
     
 # ********************** Geoapify *******************************    
     
