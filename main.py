@@ -1,12 +1,24 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 from agent.agentic_workflow import GraphBuilder
+from utils.save_to_document import save_document
 from fastapi.responses import JSONResponse
 import os
+import datetime
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = FastAPI()
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origin=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_header=["*"],
+)
 class QueryRequest(BaseModel):
     query: str
 
@@ -24,7 +36,6 @@ async def query_travel_agent(query:QueryRequest):
         print(f"Graph saved as 'my_graph.png' in {os.getcwd()}")
         # Assuming request is a pydantic object like: {"question" : "your text"}
         messages = {"messages": [query.question]}
-
         output = react_app.invoke(messages)
 
         # If request is dict with message:
