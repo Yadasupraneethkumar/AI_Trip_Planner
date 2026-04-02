@@ -31,7 +31,7 @@ class WeatherInfoTool:
             forecast_data = self.weather_service.get_forecast_weather(city)
             if forecast_data and 'list' in forecast_data:
                 forecast_summary = []
-                for i in range(len(forecast_data['List'])):
+                for i in range(len(forecast_data['list'])):
                     item = forecast_data['list'][i]
                     date = item['dt_txt'].split(' ')[0]
                     temp = item['main']['temp']

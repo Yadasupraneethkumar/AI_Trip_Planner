@@ -8,7 +8,7 @@ class PlaceSearchTool:
     def __init__(self):
         load_dotenv()
         self.geoapify_api_key = os.environ.get("GEOAPIFY_API_KEY")
-        self.geoapify_places_search = GeoapifyPlaceSearchTool(self.google_api_key)
+        self.geoapify_places_search = GeoapifyPlaceSearchTool(self.geoapify_api_key)
         # self.tavily_search = TavilyPlaceSearchTool()
         self.place_search_tool_list = self._setup_tools()
 

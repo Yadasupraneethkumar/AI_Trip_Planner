@@ -19,14 +19,14 @@ class GraphBuilder():
         self.weather_tools = WeatherInfoTool()
         self.place_search_tools = PlaceSearchTool()
         self.calculator_tools = CalculatorTool()
-        self.currecy_converter_tools = CurrencyConverterTool()
+        self.currency_converter_tools = CurrencyConverterTool()
 
         self.tools.extend([* self.weather_tools.weather_tool_list,
                            * self.place_search_tools.place_search_tool_list,
-                           * self.calculator_tools.calculator_tool_list
-                           * self.currecy_converter_tools.currecy_converter_tool_list])
+                           * self.calculator_tools.calculator_tool_list,
+                           * self.currency_converter_tools.currency_converter_tool_list])
         
-        self.llm_with_tools = self.llm.bind_tools(tool=self.tools)
+        self.llm_with_tools = self.llm.bind_tools(tools=self.tools)
 
         self.graph = None
 
@@ -39,14 +39,14 @@ class GraphBuilder():
         user_question = state["messages"]
         input_question = [self.system_prompt] + user_question
         response = self.llm_with_tools.invoke(input_question)
-        return {"messages" : {response}}
+        return {"messages" : [response]}
 
 
     # Tabnine|Edit|Test|Explain|Document
     def build_graph(self):
         graph_builder=StateGraph(MessagesState)
         graph_builder.add_node("agent",self.agent_function)
-        graph_builder.add_node("tools", ToolNode(tool=self.tools))
+        graph_builder.add_node("tools", ToolNode(tools=self.tools))
         graph_builder.add_edge(START,"agent")
         graph_builder.add_conditional_edges("agent", tools_condition)
         graph_builder.add_edge("tools","agent")

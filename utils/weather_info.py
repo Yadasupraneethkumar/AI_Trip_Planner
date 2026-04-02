@@ -3,7 +3,7 @@ import requests
 class WeatherForecastTool:
     def __init__(self, api_key:str):
         self.api_key = api_key
-        self.base_url = "https://api.weathermap.org/data/2.5"
+        self.base_url = "https://api.openweathermap.org/data/2.5"
 
 
     def get_current_weather(self, place:str):
